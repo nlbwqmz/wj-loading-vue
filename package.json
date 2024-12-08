@@ -1,0 +1,37 @@
+{
+  "name": "wj-loading-vue",
+  "version": "1.0.0",
+  "module": "dist/wj-loading-vue.es.js",
+  "type": "module",
+  "scripts": {
+    "link": "npm link",
+    "build": "vite build --config vite.config.js",
+    "publish-beta": "npm run build && npm publish --tag beta",
+    "publish-release": "npm run build && npm publish"
+  },
+  "author": {
+    "name": "魏杰",
+    "url": "https://github.com/nlbwqmz"
+  },
+  "keywords": [
+    "loading",
+    "vue",
+    "ts",
+    "js",
+    "web",
+    "h5",
+    "load"
+  ],
+  "license": "MIT",
+  "description": "vue loading自定义指令，支持多种动画。",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlbwqmz/wj-loading-vue.git"
+  },
+  "dependencies": {
+    "wj-loading": "1.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.3"
+  }
+}
