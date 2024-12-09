@@ -1,9 +1,10 @@
 {
   "name": "wj-loading-vue",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "module": "dist/wj-loading-vue.es.js",
   "type": "module",
   "scripts": {
+    "pack": "npm pack",
     "link": "npm link",
     "build": "vite build --config vite.config.js",
     "publish-beta": "npm run build && npm publish --tag beta",
