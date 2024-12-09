@@ -1,17 +1,29 @@
 import Loading from "wj-loading"
 
+/**
+ * 当arg为空时默认为 BounceLoading
+ * 当arg不为空时将首字母转大写
+ */
+const convertType = arg => {
+  if (arg && typeof arg === 'string' && arg.length > 0) {
+    return arg.replace(arg[0], arg[0].toUpperCase());
+  }
+  return 'BounceLoading'
+}
+
+const isObjectAndNotArray = value => {
+  return value && typeof value === 'object' && !Array.isArray(value)
+}
+
 const updated = (el, binding) => {
   if (!el.wjLoading) {
-    let type = binding.arg || 'BounceLoading'
-    if (typeof type === 'string' && type.length > 0) {
-      type = type.replace(type[0], type[0].toUpperCase());
-    }
-    if (type && typeof type === 'string' && Loading[type]) {
+    const type = convertType(binding.arg)
+    if (Loading[type]) {
       const value = binding.value
-      if (value && typeof value === 'object' && !Array.isArray(value)) {
+      if (isObjectAndNotArray(value)) {
         let option
-        if (value.option) {
-          option = {element: el, immediate: Boolean(value.enable), ...value.option}
+        if (isObjectAndNotArray(value.option)) {
+          option = {...value.option, element: el, immediate: Boolean(value.enable)}
         } else {
           option = {element: el, immediate: Boolean(value.enable)}
         }
@@ -27,8 +39,8 @@ const updated = (el, binding) => {
     }
   } else {
     const value = binding.value
-    if (value && typeof value === 'object' && !Array.isArray(value)) {
-      if (value.option && typeof value.option === 'object' && !Array.isArray(value.option)) {
+    if (isObjectAndNotArray(value)) {
+      if (isObjectAndNotArray(value.option)) {
         el.wjLoading.setOption(value.option)
       }
       if (value.enable) {
@@ -49,6 +61,7 @@ const updated = (el, binding) => {
 const unmounted = (el, binding) => {
   if (el && el.wjLoading) {
     el.wjLoading.remove()
+    el.wjLoading = null
   }
 }
 
@@ -67,7 +80,7 @@ const loadingDirective = {
 }
 
 const install = (app, option) => {
-  if (option && option.name) {
+  if (option && option.name && typeof option.name === 'string') {
     app.directive(option.name, loadingDirective)
   } else {
     app.directive('loading', loadingDirective)

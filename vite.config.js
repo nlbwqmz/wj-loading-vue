@@ -9,6 +9,7 @@ export default defineConfig(({mode}) => {
         fileName: (format) => `wj-loading-vue.${format}.js`,
       },
       rollupOptions: {
+        external: ['wj-loading'],
         output: [
           {
             format: 'es'

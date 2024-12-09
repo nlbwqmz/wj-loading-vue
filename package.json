@@ -16,20 +16,21 @@
   "keywords": [
     "loading",
     "vue",
-    "ts",
+    "vue2",
+    "vue3",
+    "directive",
     "js",
     "web",
-    "h5",
-    "load"
+    "h5"
   ],
   "license": "MIT",
-  "description": "vue loading自定义指令，支持多种动画。",
+  "description": "vue指令，兼容vue2和vue3，支持自定义指令名及多种动画。",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nlbwqmz/wj-loading-vue.git"
   },
-  "dependencies": {
-    "wj-loading": "1.0.0"
+  "peerDependencies": {
+    "wj-loading": "^1.0.0"
   },
   "devDependencies": {
     "vite": "^6.0.3"
