@@ -1,5 +1,9 @@
 # wj-loading-vue
 
+![NPM Version](https://img.shields.io/npm/v/wj-loading-vue)
+![NPM Downloads](https://img.shields.io/npm/dw/wj-loading-vue)
+![NPM License](https://img.shields.io/npm/l/wj-loading-vue)
+
 基于[wj-loading](https://github.com/nlbwqmz/wj-loading)构建的，`vue`指令，兼容vue2和vue3，支持自定义指令名及多种动画。
 
 - [演示](https://nlbwqmz.github.io/wj-loading-pages/)
@@ -10,7 +14,6 @@
 
 - `npm install wj-loading-vue`
 - `yarn add wj-loading-vue`
-
 
 ## 引入
 
@@ -34,7 +37,7 @@ import Loading from 'wj-loading-vue'
 Vue.use(Loading)
 
 new Vue({
-  render: h => h(App),
+render: h => h(App),
 }).$mount('#app')
 ```
 
@@ -54,24 +57,25 @@ import Loading from 'wj-loading-vue'
 - 后引入的指令会覆盖先引入的指令
 - 自定义指令名
 
-
 ## 示例
 
 ### 示例一
 
 ```vue
+
 <template>
   <div style="width: 500px; height: 500px;" v-loading:[arg]="loading"></div>
 </template>
 
 <script setup>
 
-import {ref} from "vue";
-const loading = ref(true)
+  import {ref} from "vue";
 
-setTimeout(() => {
-  loading.value = false
-}, 2000)
+  const loading = ref(true)
+
+  setTimeout(() => {
+    loading.value = false
+  }, 2000)
 
 </script>
 ```
@@ -83,29 +87,30 @@ setTimeout(() => {
 ### 示例二
 
 ```vue
+
 <template>
   <div style="width: 500px; height: 500px;" v-loading:CmSpinnerLoading="loading"></div>
 </template>
 
 <script setup>
-import {ref} from "vue";
-  
-const loading = ref({
-  enable: true, // 动画开关
-  option: { // 对应动画参数请查看wj-loading文档
-    background: 'rgba(0,0,0,.5)',
-  }
-})
+  import {ref} from "vue";
 
-setTimeout(() => {
-  // loading.value = {...loading.value, enable: false}
-  loading.value = {
-    enable: false, // 动画开关
+  const loading = ref({
+    enable: true, // 动画开关
     option: { // 对应动画参数请查看wj-loading文档
-      background: 'rgba(255,255,255,.5)',
+      background: 'rgba(0,0,0,.5)',
     }
-  }
-}, 2000)
+  })
+
+  setTimeout(() => {
+    // loading.value = {...loading.value, enable: false}
+    loading.value = {
+      enable: false, // 动画开关
+      option: { // 对应动画参数请查看wj-loading文档
+        background: 'rgba(255,255,255,.5)',
+      }
+    }
+  }, 2000)
 
 </script>
 ```
@@ -115,6 +120,7 @@ setTimeout(() => {
 ### 示例三
 
 ```vue
+
 <template>
   <div style="width: 500px; height: 500px" v-loading:CmSpinnerLoading="{
     enable: loading,
@@ -126,18 +132,18 @@ setTimeout(() => {
 </template>
 
 <script setup>
-import {ref} from "vue";
-  
-const loading = ref(true)
-const background = ref('rgba(0,0,0,0.5)')
-  
-setTimeout(() => {
-  background.value = 'rgba(255,255,255,0.5)'
-}, 2000)
+  import {ref} from "vue";
 
-setTimeout(() => {
-  loading.value = false
-}, 5000)
+  const loading = ref(true)
+  const background = ref('rgba(0,0,0,0.5)')
+
+  setTimeout(() => {
+    background.value = 'rgba(255,255,255,0.5)'
+  }, 2000)
+
+  setTimeout(() => {
+    loading.value = false
+  }, 5000)
 
 </script>
 ```
