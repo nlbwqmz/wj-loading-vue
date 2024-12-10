@@ -1,6 +1,6 @@
 {
   "name": "wj-loading-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "module": "dist/wj-loading-vue.es.js",
   "type": "module",
   "scripts": {

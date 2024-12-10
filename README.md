@@ -4,10 +4,10 @@
 ![NPM Downloads](https://img.shields.io/npm/dw/wj-loading-vue)
 ![NPM License](https://img.shields.io/npm/l/wj-loading-vue)
 
-基于[wj-loading](https://github.com/nlbwqmz/wj-loading)构建的，`vue`指令，兼容vue2和vue3，支持自定义指令名及多种动画。
+基于[wj-loading](https://github.com/nlbwqmz/wj-loading)构建的`vue`指令，兼容vue2和vue3，支持自定义指令名及多种动画。
 
 - [演示](https://nlbwqmz.github.io/wj-loading-pages/)
-- [github](https://github.com/nlbwqmz/wj-loading-vue)
+- [wj-loading-vue](https://github.com/nlbwqmz/wj-loading-vue)
 - [wj-loading](https://github.com/nlbwqmz/wj-loading)
 
 ## 安装
