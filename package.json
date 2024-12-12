@@ -1,6 +1,6 @@
 {
   "name": "wj-loading-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "module": "dist/wj-loading-vue.es.js",
   "type": "module",
   "scripts": {
@@ -35,7 +35,7 @@
     "url": "git+https://github.com/nlbwqmz/wj-loading-vue.git"
   },
   "peerDependencies": {
-    "wj-loading": "^1.0.0"
+    "wj-loading": "^1.0.2"
   },
   "devDependencies": {
     "vite": "^6.0.3"
