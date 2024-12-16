@@ -11,13 +11,29 @@ const convertType = arg => {
   return 'BounceLoading'
 }
 
+/**
+ * 检查loading类型是否更改
+ */
+const shouldCreateLoading = (el, type) => {
+  return !el.wjLoading || el.wjLoading.constructor.name !== type
+}
+
 const isObjectAndNotArray = value => {
   return value && typeof value === 'object' && !Array.isArray(value)
 }
 
+const unmounted = (el, binding) => {
+  if (el && el.wjLoading) {
+    el.wjLoading.remove()
+    el.wjLoading = null
+  }
+}
+
 const updated = (el, binding) => {
-  if (!el.wjLoading) {
-    const type = convertType(binding.arg)
+  const type = convertType(binding.arg)
+  if (shouldCreateLoading(el, type)) {
+    // 先移除原先的loading
+    unmounted(el, binding)
     if (Loading[type]) {
       const value = binding.value
       if (isObjectAndNotArray(value)) {
@@ -55,13 +71,6 @@ const updated = (el, binding) => {
         el.wjLoading.remove()
       }
     }
-  }
-}
-
-const unmounted = (el, binding) => {
-  if (el && el.wjLoading) {
-    el.wjLoading.remove()
-    el.wjLoading = null
   }
 }
 
