@@ -80,7 +80,7 @@ import Loading from 'wj-loading-vue'
 </script>
 ```
 
-`arg`支持[wj-loading](https://github.com/nlbwqmz/wj-loading)中定义的动画类型，缺省值为`BounceLoading`，支持驼峰，`v-loading:CubesLoading`和`v-loading:cubesLoading` 效果相同。
+`arg`支持[wj-loading](https://github.com/nlbwqmz/wj-loading)中定义的动画类型，支持动态修改动画类型，缺省值为`BounceLoading`，支持驼峰，`v-loading:CubesLoading`和`v-loading:cubesLoading` 效果相同。
 
 当绑定的值为**布尔类型**时，会使用对应动画类型的**默认参数**，若想**自定义参数**可以参考**示例二**和**示例三**，动画类型和对应支持的参数请查看[wj-loading](https://github.com/nlbwqmz/wj-loading)。
 

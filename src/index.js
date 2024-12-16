@@ -15,43 +15,59 @@ const convertType = arg => {
  * 检查loading类型是否更改
  */
 const shouldCreateLoading = (el, type) => {
-  return !el.wjLoading || el.wjLoading.constructor.name !== type
+  return !el.wjLoading || (el.wjLoading[Symbol.toStringTag] !== type)
 }
 
 const isObjectAndNotArray = value => {
   return value && typeof value === 'object' && !Array.isArray(value)
 }
 
-const unmounted = (el, binding) => {
+const unmounted = el => {
   if (el && el.wjLoading) {
     el.wjLoading.remove()
     el.wjLoading = null
   }
 }
 
+const createLoading = (el, binding, type) => {
+  if (Loading[type]) {
+    const value = binding.value
+    if (isObjectAndNotArray(value)) {
+      let option
+      if (isObjectAndNotArray(value.option)) {
+        option = {...value.option, element: el, immediate: Boolean(value.enable)}
+      } else {
+        option = {element: el, immediate: Boolean(value.enable)}
+      }
+      el.wjLoading = new Loading[type](option)
+    } else {
+      el.wjLoading = new Loading[type]({
+        element: el,
+        immediate: Boolean(value)
+      })
+    }
+  } else {
+    throw new Error(`Invalid type "${type}"`)
+  }
+}
+
+const switchStatus = (el, value) => {
+  if (value) {
+    el.wjLoading.loading()
+  } else {
+    el.wjLoading.remove()
+  }
+}
+
 const updated = (el, binding) => {
   const type = convertType(binding.arg)
   if (shouldCreateLoading(el, type)) {
-    // 先移除原先的loading
-    unmounted(el, binding)
-    if (Loading[type]) {
-      const value = binding.value
-      if (isObjectAndNotArray(value)) {
-        let option
-        if (isObjectAndNotArray(value.option)) {
-          option = {...value.option, element: el, immediate: Boolean(value.enable)}
-        } else {
-          option = {element: el, immediate: Boolean(value.enable)}
-        }
-        el.wjLoading = new Loading[type](option)
-      } else {
-        el.wjLoading = new Loading[type]({
-          element: el,
-          immediate: Boolean(value)
-        })
-      }
+    if (el.wjLoading) {
+      el.wjLoading.remove().then(() => {
+        createLoading(el, binding, type)
+      })
     } else {
-      throw new Error(`Invalid type "${type}"`)
+      createLoading(el, binding, type)
     }
   } else {
     const value = binding.value
@@ -59,17 +75,9 @@ const updated = (el, binding) => {
       if (isObjectAndNotArray(value.option)) {
         el.wjLoading.setOption(value.option)
       }
-      if (value.enable) {
-        el.wjLoading.loading()
-      } else {
-        el.wjLoading.remove()
-      }
+      switchStatus(el, value.enable)
     } else {
-      if (value) {
-        el.wjLoading.loading()
-      } else {
-        el.wjLoading.remove()
-      }
+      switchStatus(el, value)
     }
   }
 }
