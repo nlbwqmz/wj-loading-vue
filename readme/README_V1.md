@@ -1,6 +1,6 @@
 # wj-loading-vue
 
-<u>***当前为2.X文档***</u>。（[1.X文档](./readme/README_V1.md)）
+<u>***当前为1.X文档***</u>。（[2.X文档](../README.md)）
 
 ![NPM Version](https://img.shields.io/npm/v/wj-loading-vue)
 ![NPM Downloads](https://img.shields.io/npm/dw/wj-loading-vue)
@@ -24,8 +24,6 @@
 ```js
 import {createApp} from 'vue'
 import App from './App.vue'
-// 引入样式
-import 'wj-loading-vue/dist/wj-loading-vue.css'
 import Loading from 'wj-loading-vue'
 
 createApp(App).use(Loading).mount('#app')
@@ -36,8 +34,6 @@ createApp(App).use(Loading).mount('#app')
 ```js
 import Vue from 'vue'
 import App from './App.vue'
-// 引入样式
-import 'wj-loading-vue/dist/wj-loading-vue.css'
 import Loading from 'wj-loading-vue'
 
 Vue.use(Loading)
@@ -51,8 +47,6 @@ new Vue({
 
 ```js
 import {createApp} from 'vue'
-// 引入样式
-import 'wj-loading-vue/dist/wj-loading-vue.css'
 import Loading from 'wj-loading-vue'
 
 // 默认指令名为loading
@@ -103,7 +97,7 @@ createApp(App).use(Loading, {name: 'wj-loading'})
 </template>
 
 <script setup>
-  import {ref} from "vue";
+  import {ref} from 'vue';
 
   const loading = ref({
     enable: true, // 动画开关
@@ -142,7 +136,7 @@ createApp(App).use(Loading, {name: 'wj-loading'})
 </template>
 
 <script setup>
-  import {ref} from "vue";
+  import {ref} from 'vue';
 
   const loading = ref(true)
   const background = ref('rgba(0,0,0,0.5)')
@@ -157,21 +151,6 @@ createApp(App).use(Loading, {name: 'wj-loading'})
 
 </script>
 ```
-
-### 示例四
-
-```js
-import 'wj-loading-vue/dist/wj-loading-vue.css'
-import {Loading} from 'wj-loading-vue'
-
-new Loading.TextLoading({
-  element: document.body,
-  background: 'rgba(255, 255, 255, .8)',
-  immediate: true
-})
-```
-
-支持[wj-loading](https://github.com/nlbwqmz/wj-loading)原生使用方法。
 
 
 

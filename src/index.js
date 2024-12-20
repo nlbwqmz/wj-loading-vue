@@ -1,4 +1,5 @@
-import Loading from "wj-loading"
+import LoadingObj from "wj-loading"
+import 'wj-loading/dist/wj-loading.css'
 
 /**
  * 当arg为空时默认为 BounceLoading
@@ -30,7 +31,7 @@ const unmounted = el => {
 }
 
 const createLoading = (el, binding, type) => {
-  if (Loading[type]) {
+  if (LoadingObj[type]) {
     const value = binding.value
     if (isObjectAndNotArray(value)) {
       let option
@@ -39,9 +40,9 @@ const createLoading = (el, binding, type) => {
       } else {
         option = {element: el, immediate: Boolean(value.enable)}
       }
-      el.wjLoading = new Loading[type](option)
+      el.wjLoading = new LoadingObj[type](option)
     } else {
-      el.wjLoading = new Loading[type]({
+      el.wjLoading = new LoadingObj[type]({
         element: el,
         immediate: Boolean(value)
       })
@@ -105,5 +106,7 @@ const install = (app, option) => {
 }
 
 export default {
-  install
+  install,
 }
+
+export const Loading = LoadingObj
