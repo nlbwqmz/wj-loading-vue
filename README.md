@@ -14,8 +14,12 @@
 
 ## 安装
 
-- `npm install wj-loading-vue`
-- `yarn add wj-loading-vue`
+**`npm`可以自动安装`peerDependencies`依赖，可只安装`wj-loading-vue`。**
+
+- `npm install wj-loading wj-loading-vue`或`npm install wj-loading-vue`
+- `yarn add wj-loading wj-loading-vue`
+
+**npm可以自动安装peerDependencies依赖可只直接安装**
 
 ## 引入
 
