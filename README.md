@@ -17,8 +17,6 @@
 - `npm install wj-loading wj-loading-vue`
 - `yarn add wj-loading wj-loading-vue`
 
-**npm可以自动安装peerDependencies依赖可只直接安装**
-
 ## 引入
 
 ### `vue3`
